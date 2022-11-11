@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "David Johansson",
+    "classifications": [
+        "Console"
+    ],
+    "identity": "AoC.FSharp.Template",
+    "name": "Advent of Code F# Console App",
+    "shortName": "aoc-fsharp",
+    "sourceName": "AoC.FSharp.Template",
+    "tags": {
+        "language": "F#",
+        "type": "project"
+    }
+}
