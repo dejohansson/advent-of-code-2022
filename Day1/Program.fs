@@ -3,14 +3,20 @@
 [<EntryPoint>]
 let main argv =
     let filename = Array.tryItem 0 argv |> Option.defaultValue "./input.txt"
-    let lines = File.ReadAllLines filename
-    printfn $"Read {lines.Length} lines from {filename}\n"
+    let elves: string[] = (File.ReadAllText filename).Split("\r\n\r\n")
+    printfn $"Read {elves.Length} lines from {filename}\n"
 
-    let sum = lines |> Seq.map System.Int32.Parse |> Seq.sum
+    let cals =
+        elves
+        |> Array.map (fun e -> e.Split("\r\n") |> Array.map (fun r -> r |> int) |> Array.sum)
 
-    printfn $"Part 1: {sum}"
+    let maxCals = cals |> Array.max
 
-    //printfn ""
-    //printfn $"Part 2:"
+    printfn $"Part 1: {maxCals}"
+
+    let topThreeCals = cals |> Array.sortDescending |> Array.take 3 |> Array.sum
+
+    printfn ""
+    printfn $"Part 2: {topThreeCals}"
 
     0
