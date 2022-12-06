@@ -6,22 +6,15 @@ let main argv =
     let filename = Array.tryItem 0 argv |> Option.defaultValue "./input.txt"
     let datastream = File.ReadAllText filename
 
-    let part1 =
+    let findUniqueSequence datastream length =
         (datastream
-         |> Seq.windowed 4
-         |> Seq.tryFindIndex (fun x -> x |> Seq.distinct |> Seq.length = 4))
+         |> Seq.windowed length
+         |> Seq.tryFindIndex (fun x -> x |> Seq.distinct |> Seq.length = length))
             .Value
-        + 4
+        + length
 
-    let part2 =
-        (datastream
-         |> Seq.windowed 14
-         |> Seq.tryFindIndex (fun x -> x |> Seq.distinct |> Seq.length = 14))
-            .Value
-        + 14
-
-    printfn $"Part 1: {part1}"
-    printfn $"Part 2: {part2}"
+    printfn $"Part 1: {findUniqueSequence datastream 4}"
+    printfn $"Part 2: {findUniqueSequence datastream 14}"
     stopWatch.Stop()
     printfn $"Completed in {stopWatch.Elapsed.TotalMilliseconds} ms"
     0
