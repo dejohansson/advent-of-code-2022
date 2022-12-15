@@ -16,3 +16,17 @@ dotnet new install ./AoC.FSharp.Template --force
 ``` sh
 ./day.ps1 <day-number>
 ```
+
+## Run Project
+
+Run the project using the default input file `./input.txt`
+
+``` sh
+dotnet run
+```
+
+or by passing the input file as an argument
+
+``` sh
+dotnet run -- ./sample.txt
+```
